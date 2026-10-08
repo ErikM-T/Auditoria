@@ -1,0 +1,15 @@
+# Directorios de compilación y salida de Visual Studio
+[Bb]in/
+[Oo]bj/
+.vs/
+.Resultados/
+
+# Archivos de usuario y metadatos de Visual Studio
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Archivos de símbolos de depuración
+*.pdb
+*.cache
