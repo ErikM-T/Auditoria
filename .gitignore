@@ -1,8 +1,9 @@
 # Directorios de compilación y salida de Visual Studio
 [Bb]in/
 [Oo]bj/
+Resultados/
 .vs/
-.Resultados/
+
 
 # Archivos de usuario y metadatos de Visual Studio
 *.user
