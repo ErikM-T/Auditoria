@@ -188,10 +188,34 @@ namespace AuditoriaEquipos
             this.StartPosition = FormStartPosition.CenterScreen;
             this.BackColor = Color.FromArgb(245, 247, 250);
 
+            // 1. Crear el TableLayoutPanel que ocupará toda la pantalla
+            TableLayoutPanel gridPrincipal = new TableLayoutPanel();
+            gridPrincipal.Dock = DockStyle.Fill;
+            gridPrincipal.AutoScroll = true; // Permite scroll si la pantalla es muy pequeña
+
+            // 2. Definir 3 Columnas: [Resorte 50%] [Ancho Fijo del Formulario] [Resorte 50%]
+            gridPrincipal.ColumnCount = 3;
+            gridPrincipal.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            gridPrincipal.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 1030F)); // Ancho de tus controles
+            gridPrincipal.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+
+            // 3. Definir 3 Filas: [Resorte 50%] [Alto Fijo del Formulario] [Resorte 50%]
+            gridPrincipal.RowCount = 1;
+            gridPrincipal.RowStyles.Add(new RowStyle(SizeType.AutoSize, 50F));
+
+            // 4. Crear el Panel contenedor donde irán todos tus controles
             Panel panel = new Panel();
-            panel.Dock = DockStyle.Fill;
-            panel.AutoScroll = true;
-            this.Controls.Add(panel);
+            panel.Width = 1030;
+            panel.AutoSize = true;
+            panel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            panel.Margin = new Padding(0, 10, 0, 20);
+            panel.Anchor = AnchorStyles.Top;
+
+            // 5. Ubicar el panel en la celda central (Columna 1, Fila 1)
+            gridPrincipal.Controls.Add(panel, 1, 0);
+
+            // 6. Agregar la cuadrícula principal al Formulario
+            this.Controls.Add(gridPrincipal);
 
             int y = 20;
 
@@ -273,6 +297,9 @@ namespace AuditoriaEquipos
 
             txtResultados = new TextBox() { Multiline = true, ReadOnly = true, Location = new Point(15, y), Size = new Size(1000, 100), Visible = false };
             panel.Controls.Add(txtResultados);
+            y += 110;
+
+            panel.Height = y;
         }
 
         private void CrearFilaEncabezado(Panel p, ref TextBox pProc, ref TextBox pEjec, ref TextBox pFecha, ref ComboBox pCargo, ref int y)
