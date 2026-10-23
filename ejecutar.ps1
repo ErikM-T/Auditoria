@@ -1,9 +1,8 @@
 $url = "https://github.com/ErikM-T/Auditoria/releases/latest/download/AuditoriaEquipos.exe"
 $exe = "$env:TEMP\AuditoriaEquipos.exe"
 
-Invoke-WebRequest -Uri $url -OutFile $exe -UseBasicParsing
-
-Unblock-File -Path $exe -ErrorAction SilentlyContinue
+$client = New-Object System.Net.WebClient
+$client.DownloadFile($url, $exe)
 
 Start-Process -FilePath $exe -Wait
 
