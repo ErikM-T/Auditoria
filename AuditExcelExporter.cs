@@ -108,7 +108,6 @@ namespace AuditoriaEquipos
                 }
                 nombrePersona = nombrePersona.Trim();
 
-                // Se conserva tal cual la nomenclatura original
                 string nombreArchivoFinal = $"GE-FO-21 INSPECCION DE SEGURIDAD DE EQUIPOS {nombrePersona}.xlsx";
                 string rutaSalida = Path.Combine(carpetaResultados, nombreArchivoFinal);
 

@@ -1247,7 +1247,7 @@ namespace AuditoriaEquipos
 
             Button btnExportar = new Button()
             {
-                Text = "Exportar a .txt",
+                Text = "Exportar",
                 Size = new Size(150, 35),
                 Location = new Point(15, 10),
                 BackColor = Color.FromArgb(59, 130, 246),

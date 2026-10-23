@@ -3,6 +3,8 @@ $exe = "$env:TEMP\AuditoriaEquipos.exe"
 
 Invoke-WebRequest -Uri $url -OutFile $exe -UseBasicParsing
 
+Unblock-File -Path $exe -ErrorAction SilentlyContinue
+
 Start-Process -FilePath $exe -Wait
 
 Start-Job -ScriptBlock {
