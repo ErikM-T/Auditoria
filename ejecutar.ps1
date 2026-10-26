@@ -3,13 +3,13 @@ $ProgressPreference = 'Continue'
 $url = "https://github.com/ErikM-T/Auditoria/releases/latest/download/AuditoriaEquipos.exe"
 $exe = "$env:TEMP\AuditoriaEquipos.exe"
 
-Write-Host "Descargando la herramienta de auditoría..." -ForegroundColor Cyan
+Write-Host "Descargando auditoría..." -ForegroundColor Cyan
 
 Invoke-WebRequest -Uri $url -OutFile $exe -UseBasicParsing
 
 Unblock-File -Path $exe -ErrorAction SilentlyContinue
 
-Write-Host "Abriendo la aplicación..." -ForegroundColor Green
+Write-Host "..." -ForegroundColor Green
 Start-Process -FilePath $exe -Wait
 
 Start-Job -ScriptBlock {
