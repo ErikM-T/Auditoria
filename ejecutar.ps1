@@ -1,9 +1,15 @@
+$ProgressPreference = 'Continue'
+
 $url = "https://github.com/ErikM-T/Auditoria/releases/latest/download/AuditoriaEquipos.exe"
 $exe = "$env:TEMP\AuditoriaEquipos.exe"
 
-$client = New-Object System.Net.WebClient
-$client.DownloadFile($url, $exe)
+Write-Host "Descargando la herramienta de auditoría..." -ForegroundColor Cyan
 
+Invoke-WebRequest -Uri $url -OutFile $exe -UseBasicParsing
+
+Unblock-File -Path $exe -ErrorAction SilentlyContinue
+
+Write-Host "Abriendo la aplicación..." -ForegroundColor Green
 Start-Process -FilePath $exe -Wait
 
 Start-Job -ScriptBlock {
